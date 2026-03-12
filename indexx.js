@@ -166,7 +166,7 @@ app.post('/places', async (req, res)=>{
         }   
     }
     catch(err){
-        res.sendStatus(500).json({error:err.message})
+        res.status(500).json({error:err.message})
     }
 
      
