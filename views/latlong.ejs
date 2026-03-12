@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+    <h1 class="a">Get Co-ordinates of a location </h1>
+    <!-- <a class="lat" href=""><h3>  </h3></a> -->
+
+    <div class="a">
+        <form action="/places" method="post">
+            <label for="latitude">Enter Location: </label>
+            <input type='text' name="location" required> <br>
+
+            <input type="submit" value="Get result">
+            <!-- <button>Get Result</button> -->
+        </form>
+
+        <div class="err">
+            <% if (locals.err) { %>
+                <p><%= err %></p>
+            <% } %>
+        </div>
+
+    </div>
+    
+    <% if(locals.locData) {%>
+        <p class="found">Found locations for <%= loc %>.</p>
+        <% locData.forEach(d=>{ %>
+            <div class="result">
+                <!-- <p>TimeZone : <%#= timeZone %></p> -->
+                <p>Location : <%= d.name  %></p>
+                <p>Latitude : <%= d.latitude %></p>
+
+                <p>Longitude : <%= d.longitude %></p>
+                <p>Address : <%= `${d.admin3}, ${d.admin2}, ${d.admin1}, ${d.country}` %></p>
+                <p>TimeZone : <%= `${d.timezone}, ${d.country_code}` %></p>
+            </div>
+        <% }) %>
+        <p class="found">If data seems inaccurate then try other nearby locations.</p>
+    <% } %>
+
+    <% if (locals.e) { %>
+        <p class="found">No Data found for '<%= loc %>'. Try other nearby locations.</p>
+    <% } %>
+
+
+    
+</body>
+</html>

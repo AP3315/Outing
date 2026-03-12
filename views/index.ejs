@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+    <a href="/location">Get Co-ordinates</a>
+    <h1 class="a">Get Ready For Outing </h1>
+    <!-- <a class="lat" href=""><h3>  </h3></a> -->
+
+    <div class="a">
+        <form action="/uv" method="post">
+            <label for="latitude">Enter Latitude: </label>
+            <input type="number" name="lat" required> <br>
+
+            <label for="longitude">Enter Longitude: </label>
+            <input type="number" name="log" required> <br>
+
+            <input type="submit" value="Get result">
+            <!-- <button>Get Result</button> -->
+        </form>
+
+        <div class="err">
+            <% if (locals.err) { %>
+                <p><%= err %></p>
+            <% } %>
+        </div>
+
+    </div>
+
+    <div class="result">
+        <%# if(locals.uv || locals.uv===0) {%>
+            <!-- or  -->
+        <% if(locals.message) {%>
+            <!-- <p>TimeZone : <%#= timeZone %></p> -->
+            <p>UV Of Given Location : <%= uv  %></p>
+            <p><%= message %></p>
+
+            <p>Weather : <%= description %></p>
+            <p>Tempreture : <%= temp %> °C</p>
+            <p>Location : <%= location %></p>
+        <% } %>
+    </div>
+
+
+    
+</body>
+</html>
