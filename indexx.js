@@ -155,7 +155,7 @@ app.post('/places', async (req, res)=>{
                 }
             }
         );
-        // console.log(responseLoc.data);
+        console.log(responseLoc.data);
         // console.log(responseLoc.data.results);
         // res.json(responseLoc.data.results);
         if(responseLoc.data.results===undefined){
