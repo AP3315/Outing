@@ -170,7 +170,6 @@ app.post('/places', async (req, res)=>{
     }
 
      
-    // res.render('latlong.ejs');
 })
 
 
