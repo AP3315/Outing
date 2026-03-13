@@ -161,13 +161,10 @@ app.post('/places', async (req, res)=>{
         const apiRes= responseLoc.data.results || [];
         console.log(apiRes.length);
         if(apiRes.length===0){
-            console.log('in if');
             res.render('latlong.ejs', {loc: req.body.location, e:'Not found'});
         }
         else{
-            console.log('in else');
-            res.render('latlong.ejs', {loc: req.body.location, locData: responseLoc.data.results});
-            console.log('exit else');
+            res.render('latlong.ejs', {loc: req.body.location, locData: apiRes});
         }   
     }
     catch(err){
