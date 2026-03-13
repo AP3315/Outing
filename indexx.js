@@ -155,18 +155,23 @@ app.post('/places', async (req, res)=>{
                 }
             }
         );
-        console.log(responseLoc.data);
-        // console.log(responseLoc.data.results);
+        // console.log(responseLoc.data);
+        // console.log(responseLoc.data.results);  
         // res.json(responseLoc.data.results);
-        if(responseLoc.data.results===undefined){
-            res.render('latlong.ejs', {loc: req.body.location, e:'Not found'})
+        const apiRes= responseLoc.data.results || [];
+        console.log(apiRes.length);
+        if(apiRes.length===0){
+            console.log('in if');
+            res.render('latlong.ejs', {loc: req.body.location, e:'Not found'});
         }
         else{
-            res.render('latlong.ejs', {loc: req.body.location, locData: responseLoc.data.results})
+            console.log('in else');
+            res.render('latlong.ejs', {loc: req.body.location, locData: responseLoc.data.results});
+            console.log('exit else');
         }   
     }
     catch(err){
-        res.status(500).json({error:err.message})
+        res.status(500).json({error:err.message +', error in fetching data'})
     }
 
      
